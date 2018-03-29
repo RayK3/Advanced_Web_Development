@@ -1,0 +1,72 @@
+Pseudo-Classes
+  Allow you to specify the style of an element when its in a specific state. 
+  Syntax:
+    selector:pseudo-class {
+      property: value;
+    }
+  Specifically:
+  hover, focus, active
+  
+  :hover
+    Matches any selector that is currently in the hover state. 
+    ex: 
+      h1:hover {
+        background-color: pink;
+      }
+  
+  :focus
+    The focus pseudo-class represents an element such as a form input that has received focus. 
+    It is generally triggered when the user clicks or taps on an element or selects it with 
+    the keyboard's tab key
+   
+  :active
+    Triggers when an element is "being activated by user"
+    This normally seems like when the element is pressed and held. 
+    
+  A few CSS styles:
+    - box-shadow: gives a shadow in the specified position.
+    - top: 2px; This would make the element move down 2px if the position is relative. 
+    
+CSS Transforms 
+  This lets you move, warp, rotate, and scale elements. They will overwrite eachother if
+  you write one after the other. In order to do both, you need to chain them. 
+  
+  Translation:
+  ex:
+    transform: translateX(100px); moves 100px to the right
+    transform: translateY(100px); moves 100px down
+    transform: translate(20px, 20px); moves down and to the right 20px 
+  
+  Scaling:
+  ex:
+    transform: scale(3); makes the element 3 times larger. 
+    transform: scale(3, 2); makes it 3 times longer in x, 2 in y. 
+    
+    transform: scaleX(3); makes the element 3 times longer in the x.
+    transform: scaleY(3); makes the element 3 times longer in the y.
+    
+  Every aspect of the element will be scaled, including border-sizes etc. The element is by 
+  default scaled from its center.
+  
+  Transform Origin: This changes where the origin property of the element is measured. 
+    - can give it 2 numbers corresponding to x and y, or just 'left', 'right', 'center'
+    to place the origin in these locations. 
+    
+  Rotations
+    Using CSS to...rotate things
+    If the deg is positive, it will turn clockwise, if it is negative, it will turn counter-clockwise. 
+    
+Vendor Prefixes:
+  These are the -moz- and -webkit- that you have put in front of some styles. 
+  ***There are tons of auto-prefixers. Just search up css auto-prefixer
+    
+    
+Transitions:
+  4 Transition Properties:
+    - transition-duration
+    - transition-property
+    - transition-timing-function 
+    - transition-delay 
+  
+  
+    
