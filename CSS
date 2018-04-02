@@ -67,6 +67,10 @@ Transitions:
     - transition-property
     - transition-timing-function 
     - transition-delay 
+    
+  Transition-duration: takes one or more values in seconds, and applies the transition(s) over this time
+  Transition-property: if present, only transforms the properties that are explicitly stated. Or you can say all for all.
+  
   
   
     
