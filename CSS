@@ -29,7 +29,8 @@ Pseudo-Classes
     
 CSS Transforms 
   This lets you move, warp, rotate, and scale elements. They will overwrite eachother if
-  you write one after the other. In order to do both, you need to chain them. 
+  you write one after the other. In order to do both, you need to chain them. They are chained just with
+  a space or newline, not a dot. 
   
   Translation:
   ex:
@@ -70,6 +71,171 @@ Transitions:
     
   Transition-duration: takes one or more values in seconds, and applies the transition(s) over this time
   Transition-property: if present, only transforms the properties that are explicitly stated. Or you can say all for all.
+  Transition-delay: How long of a delay before the transition starts. You can give it more than one
+    comma separated values to specify different transition delays for different properties. 
+  Transition-timing-function: What's the "acceleration curve" for the transition?
+    There are a ton of different types of transition timing functions. 
+  
+  All of these can be made into one line.
+    ex:
+      transition: background 1.5s ease-in 1; (property, duration, timing-function, delay)
+    You can string multiple transitions together just with a comma between them. 
+    
+  What can be transitioned?
+    A lot of things. But the four things that transition the easiest are:
+      transform: translate();
+      transform: scale();
+      transform: rotate();
+      opacity
+    In simple terms, the last styles to be calculated on a web page are transforms and opacity. 
+    This makes them easy to recalculate, as anything before them would require the recalculation
+    of everything after. 
+    
+  There's a property called filter that you can give a value of grayscale(100%) to change the image
+  or whatever to grayscale. 
+  
+Keyframe animations:
+  Transitions allow us to animate a single state change. Keyframes allow for much more complex
+  multi-state animations. 
+  Over any interval, you can declare what should happen at any point.
+  It has two parts: the definition, and the usage. 
+  
+  Syntax:
+    @keyframes {name} {
+      0% {
+        color: red;
+        font-size: 20px;
+      }
+      50% {
+        color: orange;
+        font-size: 40px;
+      }
+      100% {
+        color: blue;
+        font-size: 60px;
+      }
+    }
+    
+    p {
+      animation-name: {name};
+      animation-duration: 5s;
+      animation-timing-function: linear;
+      animation-delay: 3s;
+      animation-iteration-count: infinite; //how many times it happens 
+    }
+    
+  Other CSS animation properties
+    animation-direction: forward; reverse; alternate; 
+      specifies the direction that the animation should happen in. Forward means the way it was declared,
+      reverse is the opposite, and alternate is alternating. 
+      
+    animation-fill-mode: forward; backwards; both; none;
+      specifies how an animation should apply styles before and after the animation. 
+      forward: takes the end state and leaves it at the end
+      backwards: takes the beginning state and applies it immediately
+      both: Does the combination of both of the two previous. 
+      
+    Often you want an animation to happen once and then stay where it finished, so animation-fill-mode:
+    forward is used often.
+    
+    animation-play-state: paused; play;
+      This allows you to pause the animation at some point, and play it again later. 
+      
+  A very common use case of css keyframe animations are loading icons.
+  
+  Flexbox:
+    It's a more efficient way to lay out, align and distrubute space among items in a container. Even
+    if their size is unknown.
+    
+    Just by setting the display to flex, the container div automatically is set to flex, and the inner
+    divs are made horizontal. 
+    
+    The element that you set the display to flex is the 'flex-container', and the elements inside 
+    are the 'flex-items'
+    
+    Main Axis: by default runs left to right
+    Cross Axis: by default runs top to bottom
+    
+    flex-direction
+      How content should behave on the main axis
+      - row (default)
+      - row-reverse -> reverses the direction of the main axis
+      - column -> top to bottom 
+      - column-reverse -> bottom to top
+      
+    flex-wrap 
+      Specifies whether items are forced into a single line OR can be wrapped into more than one line
+      - no-wrap -> this will cause it to never wrap, and never exceed the maximum width that they can 
+        all take up
+      - wrap -> causes the items to wrap down the cross axis. 
+      
+    justify-content
+      Specifies where in the available space the flex items will appear in on the main axis. 
+      - flex-start; (default) -> puts the items at the beginning of the main axis
+      - flex-end; -> puts the items at the end of the main axis, with any whitespace in front
+      - center; -> puts the items together, in the center, with extra whitespace distrubuted on the sides
+      - space-between -> takes the space, and divides it between the elements. 
+      - space-around -> takes the space, and divides it on each side of the elements. 
+      
+    align-items
+      Defines how space is divided among items on the cross axis. Uses the same logic as justify-content;
+      - /* same as justify content */
+      - baseline; -> aligns the items and makes their content line up.
+      
+    align-content
+      Defines how space is distrubuted between rows along the cross axis. Applies along the cross axis
+      because this is the direction that rows will pile up on. 
+      - stretch; -> stretches out the items to take up all available room. 
+      - flex-start;
+      - flex-end;
+      - center;
+      - space-between;
+      - space-around; 
+      
+  ***How to set a breakpoint
+    ex:
+      @media screen and (max-width: 400px) {/* styles that you want applied at this point */}
+    
+Flex Item Properties
+  align-self
+    allows you to override align-items on individual flex items
+    
+  order
+    specifies the order used to lay out items in their flex container. This is still based off of the main
+    axis direction. 
+    - by default: everything has an order of 0, so if you add a negative order to an item, it will
+      come first, and if you add a positive order to something, it will come last. 
+      It is all relative.
+      
+  flex
+    defines how a flex item will grow or shrink to fit the available space in a container.
+    It is actually a short hand property for 3 others
+      flex-grow, flex-shrink, flex-basis
+      
+      flex-basis:
+        It is like width when working as rows, but like height when working with columns. It wins over
+        width and height respectively. 
+        
+      flex-grow:         
+        Dictates how the unused space should be spread amongst flex items. 
+        - default: flex-grow: 0; which means that they don't take up any of the extra space.
+        Its all about the ratio. If you set flex-grow of all the items to 1, then
+        they will all share the space evenly. Then if you give one a value of 2, then it will get 
+        twice the amount of UNUSED SPACE as the ones set at 1. 
+        
+    
+    - This is commonly used in mobile layouts to rearrange items. 
+    
+      flex-shrink:
+        Dictates how items should shrink when there isn't enough space in the container.
+        - default: flex-shrink: 1; which means they all shrink at the same rate. 
+        - The value of flex-shrink is how fast the items should shrink relative to eachother. 
+    
+    
+    
+    
+    
+  
   
   
   
