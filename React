@@ -1,0 +1,61 @@
+JSX with React
+  - when declaring a class inside jsx, you use className instead of class because babel
+  can't tell if you mean a javascript class or an html class. 
+  
+  Adding Styles programmatically through javascript
+  - style always is represented as a JS object, so you use camelcasing and ''.
+  
+For any javascript within JSX, you can just put it in curly brackets. 
+
+Create React App
+  - A tool that allows you to get an up and running react app with minimal effort
+  - uses Webpack
+  
+  Webpack:
+    - A module bundler for modern JavaScript applications
+    - Combines different JS files into a bundle.js
+    
+History
+  - Allows you to go backwards and forwards in the browsers history. 
+  - You can change the url address bar
+  - You can change the browser's local navigation history
+  - THIS DOES NOT cause the browser to make a new GET request
+  
+BrowserRouter
+  - In order to use any routing, you need to wrap your highest-level component in a Router
+  tag
+  
+Link Component
+  - Essentially just an anchor tag, but instead when you click that link, ReactRouter will take
+  over and use the history object to change the url
+  
+NavLink Component
+  - has a prop that is activeStyle, which is a style object that will only be rendered when you 
+  are on that path. 
+  - also has a defaultStyle that will be displayed when not active.
+  
+URL Parameters
+  - Can add a paramter in the url by using :parameterName which will be accessible by using 
+  match.params.name
+  
+Route Props
+  - A Route component will be on every page, except it only renders if the url matches the path                       
+  - A component inside of a Route gets 3 props
+  
+  match - info about how the url matches the route component
+  location - where you are now, similar to window.location
+  history - similar to html5 history object, allows explicit changes to the url
+    - These are only available when their component is rendered within a route component
+    
+withRouter
+  - If a component is not rendered inside of a Route component, you can use withRouter to get route props
+  
+Route Render prop:
+  - allows you to declare inline what to render when on that route
+  ex:
+    <Route path="/teachers" render={props => (
+      <Teachers {...props} teachers={teachers} />
+    )}/> 
+    // This allows teachers to get all of the props from the route, and its own props. 
+    
+  
