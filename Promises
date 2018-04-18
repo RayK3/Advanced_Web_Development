@@ -1,0 +1,24 @@
+A new constructor function that allows us to handle asynchronous code.
+
+Promise: 
+  - A one time guaranteed return of some future value
+  - When that value is figured out - the promise is resolved/fulfilled or rejected.
+  - Friendly way to refactor callback code
+  - Libraries have implemented promises for a while, ES2015 is a little late to the game
+  
+Creating a Promise: 
+  - When creating a promise, you must pass it a callback function that has two parameters. These two\
+  parameters are functions called resolve or reject that will be called in their respective situation.
+  - If a promise is resolved, you can continue on to a .then method, which recieves a callback
+  - If the promise is rejected, it will continue to a .catch method which also recieves a callback. 
+  *- Each .then method returns a new promise, which in turn has its own method. This allows promises
+  to be chained together and return values from one promise to another. 
+  
+Promise.all
+  - Accepts an array of promises and resolves all of them or rejects once a single one of the promises
+  has been first rejected (fail fast).
+  - If all of the passed-in promises fulfill, Promise.all is fulfilled with an array of the values from the
+  passed-in promises, in the same order as the promises passed in. 
+  
+  
+  
