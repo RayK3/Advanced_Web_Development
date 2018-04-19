@@ -7,6 +7,50 @@ JSX with React
   
 For any javascript within JSX, you can just put it in curly brackets. 
 
+Props
+  - How data is passed down the component tree
+
+Default Props
+  - is a static method, and it gives default values for props in a component
+  ex:
+  
+    (inside the class)
+    
+    static defaultProps = {
+      ingredients: []
+    }
+    
+    (outside the class)
+    
+    ingredientList.defaultProps = {
+      ingredients: []
+    };
+    
+props.children
+  - A collection of the children inside of a component 
+    
+PropTypes
+  - Development time type checker for your props (only works when the app is in development)
+  
+  
+State
+  - Data in our application that can change 
+  - state is normally defined in the constructor. It is just a normal object 
+  - Changes to state should be pure
+setState
+  - The correct way to change state in your application
+  - this.setState lives in the component. It can either take an object that will just overwrite the state 
+  that is previously saved, or you can pass it a function that has a reference to the currentState which
+  you can add to. 
+  
+Component Architecture
+  - State is always passed from a parent down to a child component as a prop
+  
+Pure Functions
+  - A function with no side effects
+  - it does not modify its inputs
+  - it is repeatable. Same input = same output
+
 Create React App
   - A tool that allows you to get an up and running react app with minimal effort
   - uses Webpack
