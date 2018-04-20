@@ -179,6 +179,11 @@ Forms
 refs
   - A direct reference to a DOM element 
   - WARNING: don't use refs when you can do the same jobs in React. 
+  
+Component Lifecycle Methods
+  - Mounting Methods:
+    constructor() - when the constructor is called
+    componentWillMount() - 
     
     
   
