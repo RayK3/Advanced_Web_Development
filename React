@@ -100,6 +100,85 @@ Route Render prop:
     <Route path="/teachers" render={props => (
       <Teachers {...props} teachers={teachers} />
     )}/> 
-    // This allows teachers to get all of the props from the route, and its own props. 
+    // This allows teachers to get all of the props from the route, and its own props.
+    
+State
+  - State is always passed from a parent down to a child component as a prop
+  - State should not be passed to a sibling or a parent
+  - State should be owned by one component 
+  
+  setState() 
+    - setState that depends on previous state.
+    - If you need it to depend on a previous state, then it is much easier to just use an update function
+    
+    ex:
+      this.setState((prevState, props) => {
+        return {
+          counter: prevState.counter + 1
+        };
+      });
+      
+    -setState is Asynchronous
+    
+    *- SetState can take an optional second parameter that is a callback function that will trigger as soon
+    as the state is updated. (if you want to console.log something, this is the place to do it)
+    
+    - Just look at this:
+    const NUM_BOXES = 32;
+    const boxes = Array(NUM_BOXES).fill().map(this.getRandomColor, this);
+    
+    - an example of a stateless functional component that takes props
+    const Box = ({color}) => {               // this is grabbing the color property from the props object
+      const style = {
+        width: '180px',
+        height: '180px',
+        display: 'inline-block',
+        backgroundColor: color
+      }
+      return <div style={style} />;
+    }
+    
+    - when using an arrow function callback, 'this' is taken from the surrounding environment 
+    
+The Virtual Dom
+  - A data structure stored by React that tracks changes from one render state to the next
+  
+Synthetic Events
+  - Supports all the native browser events, but provides a consistent API on all browsers
+  
+  - You should add any events directly to the elements JSX directly when it is being rendered.
+    - Like an onClick={} property on a button 
+    
+Forms
+  Uncontrolled Component
+    A component where the state is controlled by the browser, not react
+    ex: <input type="text" />
+    
+  Controlled Component
+    A component where react controls the state
+    ex: 
+    <input
+      type="text"
+      name="inputText"
+      value={this.state.inputText}
+      onChange={(e) => {                             // whenever you enter text, the state will be reset
+        this.setState({inputText: e.target.value})
+      }}
+    />  
+    
+  Form onSubmit method
+  ex:
+  <form onSubmit={(e) => {
+    e.preventDefault();        // prevents a new http request from being fired to the server
+    const data = [...this.state.data, this.state.inputText];
+    this.setState({data, inputText: ''});
+  }}>
+  
+  You should always use onSubmit, not an onClick event on a submit button. 
+  
+refs
+  - A direct reference to a DOM element 
+  - WARNING: don't use refs when you can do the same jobs in React. 
+    
     
   
