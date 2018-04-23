@@ -183,7 +183,25 @@ refs
 Component Lifecycle Methods
   - Mounting Methods:
     constructor() - when the constructor is called
-    componentWillMount() - 
+    componentWillMount() - After the constructor has finished, but rendering hasn't happened
+    render() - when the component is rendered
+    componentDidMount() - after the components markup has been placed in the DOM
+    
+  - Unmounting Methods:
+    componentWillUnmount() - before it is unmounted
+    
+  - Updating methods: whenever setState is called
+    componentWillReceiveProps(nextProps) - if any of the props have changed
+    shouldComponentUpdate(nextProps, nextState) - if returned false, the component will not update.
+      This should not be used often, only when optimization is a big priority
+    componentWillUpdate(nextProps, nextState) - to see what the props and state will be. This is right
+      before the component updates
+    render() - when the component is rendered
+    componentDidUpdate(prevProps, prevState) - this could be used for logging.
+      
+  - Forcing Update
+    forceUpdate(callback) - skips shouldComponentUpdate and forces a render. Should be avoided in most cases  
+  
     
     
   
